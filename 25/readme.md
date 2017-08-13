@@ -1,12 +1,14 @@
-Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
 
-If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.
 
-The replacement must be in-place, do not allocate extra memory.
+You may not alter the values in the nodes, only nodes itself may be changed.
 
-Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+Only constant memory is allowed.
 
-```git
-1,2,3 → 1,3,2
-3,2,1 → 1,2,3
-1,1,5 → 1,5,1
+For example,
+Given this linked list: ```1->2->3->4->5```
+
+For k = 2, you should return: ```2->1->4->3->5```
+
+For k = 3, you should return: ```3->2->1->4->5```
