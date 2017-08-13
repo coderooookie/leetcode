@@ -1,35 +1,36 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
 public class Solution {
-    public void nextPermutation(int[] nums) {
-        if (nums == null || nums.length <2){return;}
-        int len = nums.length;
-        if (!bNextPermutation(nums,0,len)){Arrays.sort(nums);}
-        return;
-    }
-
-    public boolean bNextPermutation(int[] nums, int from, int to){
-        int len = to - from;
-        if (len == 2){
-            if (nums[from] < nums[1+from]){
-                int tmp = nums[from];
-                nums[from] = nums[1+from];
-                nums[1+from] = tmp;
-                return true;
-            } else{return false;}
-        }else{
-            boolean flag = bNextPermutation(nums,from+1,to);
-            if (flag) {return true;}
-            else{
-                for (int i = to-1; i > from; i--){
-                    if (nums[i] > nums[from]){
-                        int tmp = nums[i];
-                        nums[i] = nums[from];
-                        nums[from] = tmp;
-                        Arrays.sort(nums,from+1,to);
-                        return true;
-                    }
-                }
-                return false;
-            }
+    public ListNode reverseKGroup(ListNode head, int k) {
+    	int len = 0;
+    	ListNode tail = head;
+    	while (tail != null){
+    		len++;
+    		tail = tail.next;
+    	}
+        if (len < k || k <= 1){return head;}
+        Stack<ListNode> s = new Stack();
+        for (int i = 1; i <= len; i++){
+        	s.add(head);
+        	head = head.next;
+        	if (i%k == 0 && i+k > len){break;}
         }
+        while (!s.isEmpty()){
+        	int count = 0;
+        	ListNode tmpHead = s.peek();
+        	while (count < k){
+        		ListNode tmp = s.pop();
+        		count++;
+        		if (count == k){tmp.next = head;}else{tmp.next = s.isEmpty() ? null : s.peek();}
+        	}
+        	head = tmpHead;
+        }
+        return head;
     }
 }
