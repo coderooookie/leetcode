@@ -1,9 +1,13 @@
-Reverse digits of an integer.
+Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
 
-Example1: x = 123, return 321
-Example2: x = -123, return -321
+```git
+Example:
+Given nums = [-2, 0, 3, -5, 2, -1]
+```
 
-click to show spoilers.
-
+sumRange(0, 2) -> 1
+sumRange(2, 5) -> -1
+sumRange(0, 5) -> -3
 Note:
-The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.
+You may assume that the array does not change.
+There are many calls to sumRange function.
